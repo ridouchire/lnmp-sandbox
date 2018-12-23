@@ -14,19 +14,19 @@ services:
             - db
         networks:
             sandbox:
-                ipv4_address: 172.20.0.2
+                ipv4_address: ${MASK}.2
                 aliases:
                     - nginx
     php:
         container_name: "${NAME}-php"
-        image: nanoninja/php-fpm:7.2
+        image: php-work:7.3-fpm
         restart: always
         volumes:
             - "./conf/:/usr/local/etc/php/conf.d/"
             - "./public:/var/www/html"
         networks:
             sandbox:
-                ipv4_address: 172.20.0.3
+                ipv4_address: ${MASK}.3
                 aliases:
                     - php
     db:
@@ -44,7 +44,7 @@ services:
             - "./data/db:/var/lib/mysql"
         networks:
             sandbox:
-                ipv4_address: 172.20.0.4
+                ipv4_address: ${MASK}.4
                 aliases:
                     - db
 networks:
@@ -52,5 +52,5 @@ networks:
         driver: bridge
         ipam:
             config:
-                - subnet: 172.20.0.0/16
-                  gateway: 172.20.0.1
+                - subnet: ${MASK}.0/16
+                  gateway: ${MASK}.1
