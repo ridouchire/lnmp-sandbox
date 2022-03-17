@@ -6,7 +6,7 @@ LNMP - Linux & Nginx & Mysql & PHP-fpm sandbox
 0. Требуется установленный в системе docker и docker-compose. Воспользуйтесь документацией к вашему дистрибутиву и пакетному менеджеру для установки данных зависимостей.
 1. `git clone git@github.com:ridouchire/lnmp-sandbox.git`
 2. `cd lnmp-sandbox`
-3. `docker-compose up -d`
+3. `docker-compose up -d --build`
 4. PROFIT! Теперь можно сходить по адресу http://localhost:9999 и увидеть, что всё работает. Например, создать в `./public` файл `index.php` с таким содержимым:
 ```php
 <?php
