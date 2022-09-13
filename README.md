@@ -7,18 +7,12 @@ LNMP - Linux & Nginx & Mysql & PHP-fpm sandbox
 1. `git clone git@github.com:ridouchire/lnmp-sandbox.git`
 2. `cd lnmp-sandbox`
 3. `docker-compose up -d --build`
-4. PROFIT! Теперь можно сходить по адресу http://localhost:9999 и увидеть, что всё работает. Например, создать в `./public` файл `index.php` с таким содержимым:
-```php
-<?php
-
-phpinfo();
-```
-и убедится, что связка nginx и php-fpm работает корректно.
+4. PROFIT! Теперь можно сходить по адресу http://localhost:9999 и увидеть, что всё работает. Результатом будет страничка phpinfo. 
 
 Информация
 ----------
 
-* Для php установлены модули mysqli, pdo_mysql, zip и curl, а также composer для управления зависимостями вашего проекта. Например, запуск composer:
+* Для php установлены модули pdo_mysql, zip и curl, а также composer для управления зависимостями вашего проекта. Например, запуск composer:
 ```bash
 docker exec sandbox-php composer install
 ```
@@ -26,7 +20,5 @@ docker exec sandbox-php composer install
 
 * Доступ к mysql-консоли
 ```bash
-docker exec -it sandbox-db bash
-mysql -uroot -proot
+docker exec -it sandbox-db mysql -uroot -proot use test
 ```
-и всё! Можно выполнять SQL-запросы.
